@@ -10,7 +10,10 @@
 #import "ResultsViewController.h"
 
 @interface PhotoChooserViewController ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *selectedImageView;
 @property (nonatomic, strong) UIImage *selectedImage;
+
 @end
 
 @implementation PhotoChooserViewController
@@ -32,7 +35,8 @@
     self.selectedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
     
     // Show process button
-    if (self.selectedImage) {
+    if (self.selectedImage)
+    {
         UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle:@"Process"
                                                                       style:UIBarButtonItemStylePlain
                                                                      target:self
@@ -51,12 +55,14 @@
 
 - (void)processWasPressed:(id)sender
 {
-    ResultsViewController *resultsVC = [[UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil] instantiateViewControllerWithIdentifier:@"Results"];
+    ResultsViewController *resultsVC = [[UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil]
+                                        instantiateViewControllerWithIdentifier:@"Results"];
     
     // Create loading view.
     resultsVC.loadingView = [[UIView alloc] initWithFrame:self.view.bounds];
     resultsVC.loadingView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.5];
     [resultsVC.view addSubview:resultsVC.loadingView];
+    
     UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc] init];
     [resultsVC.loadingView addSubview:activityView];
     activityView.center = resultsVC.loadingView.center;
@@ -65,26 +71,29 @@
     resultsVC.selectedImage = self.selectedImage;
     [resultsVC.selectedImageView setImage:self.selectedImage];
     
-    // Push
     [self.navigationController pushViewController:resultsVC animated:YES];
-    
 }
 
-- (IBAction)choosePhotoWasTapped:(id)sender {
+- (IBAction)choosePhoto:(id)sender
+{
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
     imagePickerController.delegate = self;
-    
-    if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear]) {
-        imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-        imagePickerController.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
-    }
-    else {
-        imagePickerController.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-    }
-    
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
     [self presentViewController:imagePickerController
                        animated:YES
                      completion:nil];
 }
+
+- (IBAction)takePhoto:(id)sender
+{
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.delegate = self;
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    imagePickerController.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
+    [self presentViewController:imagePickerController
+                       animated:YES
+                     completion:nil];
+}
+
 
 @end

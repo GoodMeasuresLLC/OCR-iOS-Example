@@ -10,7 +10,4 @@
 
 @interface PhotoChooserViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UIImageView *selectedImageView;
-- (IBAction)choosePhotoWasTapped:(id)sender;
-
 @end

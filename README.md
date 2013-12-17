@@ -10,8 +10,16 @@ This was a little project I did one night to see how well OCR performed on the i
 ### Setup
 
 1. Clone this repo.
-2. Go to [https://code.google.com/p/tesseract-ocr/downloads/list](https://code.google.com/p/tesseract-ocr/downloads/list) to download a language dataset.
-3. Place your decompressed tesseract data in a folder called `tessdata` like this:
+2. Run the app on your device.
+3. It should be able to scan English language characters.
+
+
+### Updating the language dataset
+
+This repository contains the English language data for Tesseract 3.02, so if you'd like to update to a later version or use another langage, follow the steps below.
+
+1. Go to [https://code.google.com/p/tesseract-ocr/downloads/list](https://code.google.com/p/tesseract-ocr/downloads/list) to download a language dataset.
+2. Replace the `tessdata` folder with your decompressed tesseract data:
 
 ![image](https://raw.github.com/mstrchrstphr/OCR-iOS-Example/master/images/ocr-ios-screenshot01.png)
 

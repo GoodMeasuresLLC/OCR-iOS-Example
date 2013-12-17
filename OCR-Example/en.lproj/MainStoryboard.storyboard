@@ -25,7 +25,7 @@
                                     <constraint firstAttribute="width" constant="280" id="hBe-Lm-KAb"/>
                                 </constraints>
                             </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vbI-7y-gFB">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vbI-7y-gFB">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
@@ -46,9 +46,11 @@
                         <color key="backgroundColor" red="0.94549186862244894" green="0.94549186862244894" blue="0.94549186862244894" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="ied-me-LFb" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" id="517-sv-fOw"/>
+                            <constraint firstItem="vbI-7y-gFB" firstAttribute="centerX" secondItem="ied-me-LFb" secondAttribute="centerX" id="M2X-E6-0jL"/>
                             <constraint firstAttribute="trailing" secondItem="ied-me-LFb" secondAttribute="trailing" constant="20" id="Tfb-b4-ReH"/>
+                            <constraint firstAttribute="bottom" secondItem="vbI-7y-gFB" secondAttribute="bottom" id="UsV-VB-kVy"/>
                             <constraint firstItem="ied-me-LFb" firstAttribute="top" secondItem="GQi-u2-6Gh" secondAttribute="bottom" constant="10" id="XZL-Vu-sEN"/>
-                            <constraint firstItem="Jej-Jp-hAb" firstAttribute="top" secondItem="ied-me-LFb" secondAttribute="bottom" constant="74" id="Z7y-mi-EfW"/>
+                            <constraint firstItem="vbI-7y-gFB" firstAttribute="leading" secondItem="3" secondAttribute="leading" id="tWN-VI-2nv"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="OCR" id="8v9-HW-gXR"/>

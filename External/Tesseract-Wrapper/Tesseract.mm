@@ -48,43 +48,20 @@ namespace tesseract {
     return self;
 }
 
-- (BOOL)initEngine {
-//    int returnCode = _tesseract->Init([_dataPath UTF8String], [_language UTF8String]);
-//    int rows = 5;
-//    char **configs = new char*[rows];
-//    
-//    const char *config0 = "load_system_dawg F";
-//    configs[0] = (char *)malloc(strlen(config0));
-//    strcpy(configs[0], config0);
-//
-//    const char *config1 = "load_freq_dawg F";
-//    configs[1] = (char *)malloc(strlen(config1));
-//    strcpy(configs[1], config1);
-//
-//    const char *config2 = "user_words_suffix user-words";
-//    configs[2] = (char *)malloc(strlen(config2));
-//    strcpy(configs[2], config2);
-//    
-//    const char *config3 = "language_model_penalty_non_dict_word 1";
-//    configs[3] = (char *)malloc(strlen(config3));
-//    strcpy(configs[3], config3);
-//
-//    const char *config4 = "language_model_penalty_non_freq_dict_word 1";
-//    configs[4] = (char *)malloc(strlen(config4));
-//    strcpy(configs[4], config4);
-    
+- (BOOL)initEngine {   
     int rows = 1;
     char **configs = new char*[rows];
-    const char *config = "config";
+    
+    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentPath = ([documentPaths count] > 0) ? [documentPaths objectAtIndex:0] : nil;
+    NSString *dataPath = [documentPath stringByAppendingPathComponent:@"/tessdata/config"];
+    
+    const char *config = [dataPath UTF8String];
     configs[0] = strdup(config);
     
     int returnCode = _tesseract->Init([_dataPath UTF8String], [_language UTF8String], tesseract::OEM_DEFAULT, configs, rows, NULL, NULL, false);
     
     free(configs[0]);
-//    free(configs[1]);
-//    free(configs[2]);
-//    free(configs[3]);
-//    free(configs[4]);
     
     return (returnCode == 0) ? YES : NO;
 }

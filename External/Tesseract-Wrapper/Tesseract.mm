@@ -48,7 +48,7 @@ namespace tesseract {
     return self;
 }
 
-- (BOOL)initEngine {   
+- (BOOL)initEngine {
     int rows = 1;
     char **configs = new char*[rows];
     
@@ -75,13 +75,11 @@ namespace tesseract {
     NSString *dataPath = [documentPath stringByAppendingPathComponent:_dataPath];
     
     // Copy data in Doc Directory
-    if (![fileManager fileExistsAtPath:dataPath]) {
-        NSString *bundlePath = [[NSBundle bundleForClass:[self class]] bundlePath];
-        NSString *tessdataPath = [bundlePath stringByAppendingPathComponent:_dataPath];
-        if (tessdataPath) {
-            [fileManager createDirectoryAtPath:documentPath withIntermediateDirectories:YES attributes:nil error:NULL];
-            [fileManager copyItemAtPath:tessdataPath toPath:dataPath error:nil];
-        }
+    NSString *bundlePath = [[NSBundle bundleForClass:[self class]] bundlePath];
+    NSString *tessdataPath = [bundlePath stringByAppendingPathComponent:_dataPath];
+    if (tessdataPath) {
+        [fileManager createDirectoryAtPath:documentPath withIntermediateDirectories:YES attributes:nil error:NULL];
+        [fileManager copyItemAtPath:tessdataPath toPath:dataPath error:nil];
     }
     
     setenv("TESSDATA_PREFIX", [[documentPath stringByAppendingString:@"/"] UTF8String], 1);

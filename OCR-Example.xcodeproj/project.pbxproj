@@ -650,7 +650,6 @@
 				INFOPLIST_FILE = "OCR-Example/OCR-Example-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/OCR-Example/tesseract-ios-lib/lib\"",
 					"\"$(SRCROOT)/External/tesseract-ios-lib/lib\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -672,7 +671,6 @@
 				INFOPLIST_FILE = "OCR-Example/OCR-Example-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/OCR-Example/tesseract-ios-lib/lib\"",
 					"\"$(SRCROOT)/External/tesseract-ios-lib/lib\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
